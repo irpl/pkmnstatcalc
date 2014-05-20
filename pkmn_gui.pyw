@@ -158,7 +158,7 @@ class Application(Frame):
         self.calc = Button(self, text = "calc", command=self.pull)
         self.calc.grid(row = 6, column = 3, sticky = S)
 
-        self.reset = Button(self, text = "reset")
+        self.reset = Button(self, text = "reset", command=self.reset)
         self.reset.grid(row = 7, column = 3, sticky = S)
         
         ##self.reset.Bind
@@ -210,9 +210,31 @@ class Application(Frame):
         self.spatk.insert('1.0',stat[3])
         self.spdef.insert('1.0',stat[4])
         self.spd.insert('1.0',stat[5])
+        print pkmn(p)
+        print stat
 
-##    def push(self):
-##        self.hp.insert(pull(self)[0])
+    def reset(self):
+        self.pkmn.delete(0,END)
+        self.lvl.delete(0,END)
+        self.nat.delete(0,END)
+        self.hpiv.delete('0.0','end')
+        self.atkiv.delete('0.0','end')
+        self.defiv.delete('0.0','end')
+        self.spatkiv.delete('0.0','end')
+        self.spdefiv.delete('0.0','end')
+        self.spdiv.delete('0.0','end')
+        self.hpev.delete('0.0','end')
+        self.atkev.delete('0.0','end')
+        self.defev.delete('0.0','end')
+        self.spatkev.delete('0.0','end')
+        self.spdefev.delete('0.0','end')
+        self.spdev.delete('0.0','end')
+        self.hp.delete('0.0','end')
+        self.atk.delete('0.0','end')
+        self.defn.delete('0.0','end')
+        self.spatk.delete('0.0','end')
+        self.spdef.delete('0.0','end')
+        self.spd.delete('0.0','end')
 
     def focus_next_window(self,event):
         event.widget.tk_focusNext().focus()
