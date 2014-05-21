@@ -188,6 +188,12 @@ class Application(Frame):
         self.spdev.insert('1.0', '136')
         
     def pull(self):
+        self.hp.delete('0.0','end')
+        self.atk.delete('0.0','end')
+        self.defn.delete('0.0','end')
+        self.spatk.delete('0.0','end')
+        self.spdef.delete('0.0','end')
+        self.spd.delete('0.0','end')
         p = self.pkmn.get()
         l = int(self.lvl.get())
         n = self.nat.get()
