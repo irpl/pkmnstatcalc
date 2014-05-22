@@ -253,16 +253,11 @@ class Application(Frame):
     def focus_next_window(self,event):
         event.widget.tk_focusNext().focus()
         return("break")
-    
 
-        
 root = Tk()
 var = IntVar()
 root.title("pkmnstatcalc")
 root.geometry("590x240")
 root.resizable(False,False)
-
 app = Application(root)
-##app.grid()
-
 root.mainloop()

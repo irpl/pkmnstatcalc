@@ -12,8 +12,8 @@ def statAtk(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Attack',Nature)))
-    return stat
+    Atk = (((2 * BaseAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Attack',Nature))
+    return Atk
 
 def statDef(p,i,e,l,n):
     BaseDef = getDef(p)
@@ -21,8 +21,8 @@ def statDef(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Defense',Nature)))
-    return stat
+    Def = (((2 * BaseDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Defense',Nature))
+    return Def
 
 def statSpAtk(p,i,e,l,n):
     BaseSpAtk = getSpAtk(p)
@@ -30,8 +30,8 @@ def statSpAtk(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Sp. Attack',Nature)))
-    return stat
+    SpAtk = (((2 * BaseSpAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Sp. Attack',Nature))
+    return SpAtk
 
 def statSpDef(p,i,e,l,n):
     BaseSpDef = getSpDef(p)
@@ -39,8 +39,8 @@ def statSpDef(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Sp. Defense',Nature)))
-    return stat
+    SpDef = (((2 * BaseSpDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Sp. Defense',Nature))
+    return SpDef
 
 def statSpd(p,i,e,l,n):
     BaseSpd = getSpd(p)
@@ -48,8 +48,8 @@ def statSpd(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpd + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Speed',Nature)))
-    return stat
+    Spd = (((2 * BaseSpd + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Speed',Nature))
+    return Spd
 
 def pkmn(p):
     db = open('pkmn_genVI.csv','r')        
