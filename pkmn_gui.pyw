@@ -160,8 +160,16 @@ class Application(Frame):
 
         self.reset = Button(self, text = "reset", command=self.reset)
         self.reset.grid(row = 7, column = 3, sticky = S)
+
+        self.genI = Radiobutton(self, text = "Gen I", value = 1, variable = var)
+        self.genI.grid(row = 5, column = 0, sticky = W, padx = (100,0))
+
+        self.genII_V = Radiobutton(self, text = "Gen II-V", value = 2, variable = var)
+        self.genII_V.grid(row = 6, column = 0, sticky = W, padx = (100,0))
+
+        self.genVI = Radiobutton(self, text = "Gen VI", value = 3, variable = var)
+        self.genVI.grid(row = 7, column = 0, sticky = W, padx = (100,0))
         
-        ##self.reset.Bind
         self.hpiv.bind("<Tab>", self.focus_next_window)
         self.atkiv.bind("<Tab>", self.focus_next_window)
         self.defiv.bind("<Tab>", self.focus_next_window)
@@ -249,6 +257,7 @@ class Application(Frame):
 
         
 root = Tk()
+var = IntVar()
 root.title("pkmnstatcalc")
 root.geometry("590x240")
 root.resizable(False,False)

@@ -3,7 +3,7 @@ def hp(p,i,e,l):
     IV = i
     EV = e
     Level = l
-    hp = ((2 * BaseHP + IV + (EV / 4)) * Level / 100 + Level + 10)
+    hp = ((2 * BaseHP + IV + (EV / 4.0)) * Level / 100.0 + Level + 10)
     return hp
 
 def statAtk(p,i,e,l,n):
@@ -12,8 +12,8 @@ def statAtk(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseAtk + IV + (EV / 4)) * Level / 100 + 5) * float(natureMod('Attack',Nature)))
-    return int(stat)
+    stat = (((2 * BaseAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Attack',Nature)))
+    return stat
 
 def statDef(p,i,e,l,n):
     BaseDef = getDef(p)
@@ -21,8 +21,8 @@ def statDef(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseDef + IV + (EV / 4)) * Level / 100 + 5) * float(natureMod('Defense',Nature)))
-    return int(stat)
+    stat = (((2 * BaseDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Defense',Nature)))
+    return stat
 
 def statSpAtk(p,i,e,l,n):
     BaseSpAtk = getSpAtk(p)
@@ -30,8 +30,8 @@ def statSpAtk(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpAtk + IV + (EV / 4)) * Level / 100 + 5) * float(natureMod('Sp. Attack',Nature)))
-    return int(stat)
+    stat = (((2 * BaseSpAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Sp. Attack',Nature)))
+    return stat
 
 def statSpDef(p,i,e,l,n):
     BaseSpDef = getSpDef(p)
@@ -39,8 +39,8 @@ def statSpDef(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpDef + IV + (EV / 4)) * Level / 100 + 5) * float(natureMod('Sp. Defense',Nature)))
-    return int(stat)
+    stat = (((2 * BaseSpDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Sp. Defense',Nature)))
+    return stat
 
 def statSpd(p,i,e,l,n):
     BaseSpd = getSpd(p)
@@ -48,11 +48,11 @@ def statSpd(p,i,e,l,n):
     EV = e
     Level = l
     Nature = n
-    stat = (((2 * BaseSpd + IV + (EV / 4)) * Level / 100 + 5) * float(natureMod('Speed',Nature)))
-    return int(stat)
+    stat = (((2 * BaseSpd + IV + (EV / 4.0)) * Level / 100.0 + 5) * float(natureMod('Speed',Nature)))
+    return stat
 
 def pkmn(p):
-    db = open('pkmn.csv','r')
+    db = open('pkmn_genVI.csv','r')        
     n = int(db.readline())
     for i in xrange(n):
         lst = db.readline().split(',')
