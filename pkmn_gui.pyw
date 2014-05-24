@@ -182,18 +182,18 @@ class Application(Frame):
         self.spatkev.bind("<Tab>", self.focus_next_window)
         self.spdefev.bind("<Tab>", self.focus_next_window)
 
-        self.hpiv.insert('1.0', '9')
-        self.atkiv.insert('1.0', '24')
-        self.defiv.insert('1.0', '30')
-        self.spatkiv.insert('1.0', '27')
-        self.spdefiv.insert('1.0', '24')
-        self.spdiv.insert('1.0', '1')
-        self.hpev.insert('1.0', '18')
-        self.atkev.insert('1.0', '168')
-        self.defev.insert('1.0', '86')
-        self.spatkev.insert('1.0', '49')
-        self.spdefev.insert('1.0', '14')
-        self.spdev.insert('1.0', '136')
+##        self.hpiv.insert('1.0', '9')
+##        self.atkiv.insert('1.0', '24')
+##        self.defiv.insert('1.0', '30')
+##        self.spatkiv.insert('1.0', '27')
+##        self.spdefiv.insert('1.0', '24')
+##        self.spdiv.insert('1.0', '1')
+##        self.hpev.insert('1.0', '18')
+##        self.atkev.insert('1.0', '168')
+##        self.defev.insert('1.0', '86')
+##        self.spatkev.insert('1.0', '49')
+##        self.spdefev.insert('1.0', '14')
+##        self.spdev.insert('1.0', '136')
         
     def pull(self):
         self.hp.delete('0.0','end')
@@ -205,26 +205,63 @@ class Application(Frame):
         p = self.pkmn.get()
         l = int(self.lvl.get())
         n = self.nat.get()
-        hp_i = int(self.hpiv.get('1.0','end'))
-        atk_i = int(self.atkiv.get('1.0','end'))
-        def_i = int(self.defiv.get('1.0','end'))
-        spatk_i = int(self.spatkiv.get('1.0','end'))
-        spdef_i = int(self.spdefiv.get('1.0','end'))
-        spd_i = int(self.spdiv.get('1.0','end'))
-        hp_e = int(self.hpev.get('1.0','end'))
-        atk_e = int(self.atkev.get('1.0','end'))
-        def_e = int(self.defev.get('1.0','end'))
-        spatk_e = int(self.spatkev.get('1.0','end'))
-        spdef_e = int(self.spdefev.get('1.0','end'))
-        spd_e = int(self.spdev.get('1.0','end'))
-        stat = calcStat(p,hp_i,atk_i,def_i,spatk_i,spdef_i,spd_i,hp_e,atk_e,def_e,spatk_e,spdef_e,spd_e,l,n)
-        self.hp.insert('1.0',stat[0])
-        self.atk.insert('1.0',stat[1])
-        self.defn.insert('1.0',stat[2])
-        self.spatk.insert('1.0',stat[3])
-        self.spdef.insert('1.0',stat[4])
-        self.spd.insert('1.0',stat[5])
-        print pkmn(p)
+        if (self.hpiv.get('1.0','end') == u'\n'):
+            hp_i = 0
+        else:
+            hp_i = int(self.hpiv.get('1.0','end'))
+        if (self.atkiv.get('1.0','end') == u'\n'):
+            atk_i = 0
+        else:
+            atk_i = int(self.atkiv.get('1.0','end'))
+        if (self.defiv.get('1.0','end') == u'\n'):
+            def_i = 0
+        else:
+            def_i = int(self.defiv.get('1.0','end'))
+        if (self.spatkiv.get('1.0','end') == u'\n'):
+            spatk_i = 0
+        else:
+            spatk_i = int(self.spatkiv.get('1.0','end'))
+        if (self.spdefiv.get('1.0','end') == u'\n'):
+            spdef_i = 0
+        else:
+            spdef_i = int(self.spdefiv.get('1.0','end'))
+        if (self.spdiv.get('1.0','end') == u'\n'):
+            spd_i = 0
+        else:
+            spd_i = int(self.spdiv.get('1.0','end'))
+        if (self.hpev.get('1.0','end') == u'\n'):
+            hp_e = 0
+        else:
+            hp_e = int(self.hpev.get('1.0','end'))
+        if (self.atkev.get('1.0','end') == u'\n'):
+            atk_e = 0
+        else:
+            atk_e = int(self.atkev.get('1.0','end'))
+        if (self.defev.get('1.0','end') == u'\n'):
+            def_e = 0
+        else:
+            def_e = int(self.defev.get('1.0','end'))
+        if (self.spatkev.get('1.0','end') == u'\n'):
+            spatk_e = 0
+        else:
+            spatk_e = int(self.spatkev.get('1.0','end'))
+        if (self.spdefev.get('1.0','end') == u'\n'):
+            spdef_e = 0
+        else:
+            spdef_e = int(self.spdefev.get('1.0','end'))
+        if (self.spdev.get('1.0','end') == u'\n'):
+            spd_e = 0
+        else:
+            spd_e = int(self.spdev.get('1.0','end'))
+        r = var.get()
+        stat = calcStat(p,hp_i,atk_i,def_i,spatk_i,spdef_i,spd_i,hp_e,atk_e,def_e,spatk_e,spdef_e,spd_e,l,n,r)
+        self.hp.insert('1.0',int(stat[0]))
+        self.atk.insert('1.0',int(stat[1]))
+        self.defn.insert('1.0',int(stat[2]))
+        self.spatk.insert('1.0',int(stat[3]))
+        self.spdef.insert('1.0',int(stat[4]))
+        self.spd.insert('1.0',int(stat[5]))
+        print pkmn(p,r)
         print stat
 
     def reset(self):
