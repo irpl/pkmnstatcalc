@@ -1,13 +1,13 @@
-def hp(p,i,e,l):
-    BaseHP = getHP(p)
+def hp(p,i,e,l,r):
+    BaseHP = getHP(p,r)
     IV = i
     EV = e
     Level = l
     hp = ((2 * BaseHP + IV + (EV / 4.0)) * Level / 100.0 + Level + 10)
     return hp
 
-def statAtk(p,i,e,l,n):
-    BaseAtk = getAtk(p)
+def statAtk(p,i,e,l,n,r):
+    BaseAtk = getAtk(p,r)
     IV = i
     EV = e
     Level = l
@@ -15,8 +15,8 @@ def statAtk(p,i,e,l,n):
     Atk = (((2 * BaseAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Attack',Nature))
     return Atk
 
-def statDef(p,i,e,l,n):
-    BaseDef = getDef(p)
+def statDef(p,i,e,l,n,r):
+    BaseDef = getDef(p,r)
     IV = i
     EV = e
     Level = l
@@ -24,8 +24,8 @@ def statDef(p,i,e,l,n):
     Def = (((2 * BaseDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Defense',Nature))
     return Def
 
-def statSpAtk(p,i,e,l,n):
-    BaseSpAtk = getSpAtk(p)
+def statSpAtk(p,i,e,l,n,r):
+    BaseSpAtk = getSpAtk(p,r)
     IV = i
     EV = e
     Level = l
@@ -33,8 +33,8 @@ def statSpAtk(p,i,e,l,n):
     SpAtk = (((2 * BaseSpAtk + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Sp. Attack',Nature))
     return SpAtk
 
-def statSpDef(p,i,e,l,n):
-    BaseSpDef = getSpDef(p)
+def statSpDef(p,i,e,l,n,r):
+    BaseSpDef = getSpDef(p,r)
     IV = i
     EV = e
     Level = l
@@ -42,8 +42,8 @@ def statSpDef(p,i,e,l,n):
     SpDef = (((2 * BaseSpDef + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Sp. Defense',Nature))
     return SpDef
 
-def statSpd(p,i,e,l,n):
-    BaseSpd = getSpd(p)
+def statSpd(p,i,e,l,n,r):
+    BaseSpd = getSpd(p,r)
     IV = i
     EV = e
     Level = l
@@ -51,8 +51,13 @@ def statSpd(p,i,e,l,n):
     Spd = (((2 * BaseSpd + IV + (EV / 4.0)) * Level / 100.0 + 5) * natureMod('Speed',Nature))
     return Spd
 
-def pkmn(p):
-    db = open('pkmn_genVI.csv','r')        
+def pkmn(p,r):
+    if (r == 3):
+        db = open('pkmn_genVI.csv','r')
+    elif (r == 2):
+        db = open('pkmn_genII-V.csv','r')
+    elif (r == 1):
+        db = open('pkmn_genI.csv','r')
     n = int(db.readline())
     for i in xrange(n):
         lst = db.readline().split(',')
@@ -63,31 +68,36 @@ def pkmn(p):
             return lst
     db.close()
 
-def calcStat(p,hp_i,atk_i,def_i,spatk_i,spdef_i,spd_i,hp_e,atk_e,def_e,spatk_e,spdef_e,spd_e,l,n):
-    return [hp(p,hp_i,hp_e,l),statAtk(p,atk_i,atk_e,l,n),statDef(p,def_i,def_e,l,n),statSpAtk(p,spatk_i,spatk_e,l,n),statSpDef(p,spdef_i,spdef_e,l,n),statSpd(p,spd_i,spd_e,l,n)]
+def calcStat(p,hp_i,atk_i,def_i,spatk_i,spdef_i,spd_i,hp_e,atk_e,def_e,spatk_e,spdef_e,spd_e,l,n,r):
+    return [hp(p,hp_i,hp_e,l,r),
+            statAtk(p,atk_i,atk_e,l,n,r),
+            statDef(p,def_i,def_e,l,n,r),
+            statSpAtk(p,spatk_i,spatk_e,l,n,r),
+            statSpDef(p,spdef_i,spdef_e,l,n,r),
+            statSpd(p,spd_i,spd_e,l,n,r)]
     
-def getHP(p):
-    HP = pkmn(p)[2]
+def getHP(p,r):
+    HP = pkmn(p,r)[2]
     return HP
 
-def getAtk(p):
-    Atk = pkmn(p)[3]
+def getAtk(p,r):
+    Atk = pkmn(p,r)[3]
     return Atk
 
-def getDef(p):
-    Def = pkmn(p)[4]
+def getDef(p,r):
+    Def = pkmn(p,r)[4]
     return Def
 
-def getSpAtk(p):
-    SpAtk = pkmn(p)[5]
+def getSpAtk(p,r):
+    SpAtk = pkmn(p,r)[5]
     return SpAtk
 
-def getSpDef(p):
-    SpDef = pkmn(p)[6]
+def getSpDef(p,r):
+    SpDef = pkmn(p,r)[6]
     return SpDef
 
-def getSpd(p):
-    Spd = pkmn(p)[7]
+def getSpd(p,r):
+    Spd = pkmn(p,r)[7]
     return Spd
                
 def nature(nat):
