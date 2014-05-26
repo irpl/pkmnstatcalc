@@ -12,7 +12,7 @@ class Application(Frame):
         self.calcthings()
 
     def pkmnthings(self):
-        self.hmm = Label(self, text = "pkmn", foreground = "grey")
+        self.hmm = Label(self, text = "pkmn", foreground = "#696969")
         self.hmm.grid(row = 0, column = 0, pady = (0,12), sticky = NW)
 
         self.pkmnlabel = Label(self, text = "Pokemon: ")
@@ -34,7 +34,7 @@ class Application(Frame):
         self.nat.grid(row = 3, column = 0, padx = (70,20), pady = (0,12))
 
     def statthings(self):
-        self.hmm2 = Label(self, text = "calc", foreground = "grey")
+        self.hmm2 = Label(self, text = "calc", foreground = "#696969")
         self.hmm2.grid(row = 4, column = 1, sticky = NW, padx = (22,0), pady = (0,12))
 
         self.hplabel = Label(self, text = "HP")
@@ -74,7 +74,7 @@ class Application(Frame):
         self.spd.grid(row = 7, column = 2, padx = (0,))
 
     def calcthings(self):
-        self.hmm1 = Label(self,text = "stat", foreground = "grey")
+        self.hmm1 = Label(self,text = "stat", foreground = "#696969")
         self.hmm1.grid(row = 0, column = 1, sticky = NW, padx =(22,0), pady = (0,0))
 
         self.ivlabel = Label(self,text = "IV:")
